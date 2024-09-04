@@ -1,0 +1,209 @@
+.App {
+  display: flex;
+  overflow: hidden;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Custom CSS */
+.box{
+  border: 1px solid black;
+}
+.h-20{
+  height: 20vh;
+}
+.h-90{
+  height: 90%;
+}
+.h-7{ height: 7% !important;}
+.h-10{ height: 10%;}
+.w-10{
+  width: 10%;
+}
+.w-80{ width: 80%;}
+.w-85{ width: 85%;}
+.w-5{
+  width: 5%;
+}
+.bg-green{ background-color: rgb(12,68,76);}
+.bg-pink{ background-color: rgb(238,234,223);}
+.text-green{ color: rgb(12,68,76);}
+.vw-25{
+  width: 25vw;
+}
+.ms-6{
+  margin-left: 60px;
+}
+/* .fixed-bottom{
+  position: fixed !important;
+  bottom: 0;
+} */
+.middle-pane{
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 100vh;
+  max-width: 25%;
+  min-width: 25%;
+}
+.walpaper{
+  background-image: url("../public/background.png") !important;
+  /* background-repeat: repeat; */
+}
+body::-webkit-scrollbar{
+  display: none;
+}
+.search-bar{
+  max-height: 100%;
+  width: 80%;
+  box-sizing: content-box;
+}
+.profile{
+  height: 40px;
+  min-width: 40px;
+  box-sizing: content-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+}
+.middle-pane-top-bar, .chat-header{
+  /* min-height: 10%; */
+  height: 10%;
+}
+.pagination{
+  height: 10%;
+}
+#scrollableDiv{
+  overflow-y: scroll !important;
+  height: 80%;
+  max-height: 80%;
+  min-height: 80%;
+}
+.chat-item{
+  /* overflow: hidden; */
+}
+.infinite-scroll-component{
+  overflow: hidden !important;
+}
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 15px; 
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  /* box-sizing: border-box; */
+  background-color: #f0f0f0;
+}
+.right-pane{
+  width: 100%;
+  height: 100vh;
+}
+.chat-component{
+  height: 80%;
+}
+.template-bar{
+  border-left: 5px solid #f0f0f0;
+  height: 10%;
+}
+.collapse-div{
+  height: 40vh;
+  background-color: #f8f9fa;
+  overflow-y: scroll;
+}
+.template-preview{
+  height: 70vh;
+  background-color: #f8f9fa;
+}
+/* .scroll{
+  overflow: scroll;
+} */
+.template-list-item{
+  align-items: center;
+}
+.input-box-search{
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAAA4klEQVQoz43SPUpDQRQG0POsxSpaB0wvtiKW/nWCBMFG09uEWwR0AQamcQcKBrQSREmnK1BwETHZga3NvDComHztzJk78zGVnIhooYcdrGCMR/RTSiNFFjLYxxu+cIgWjrGIj4jYKlEVEat4x1FKaehHIuIEfayllCb1pHPc/AUgpXSNV5yV19vGwP8ZYLdEDYxmoFHeN0VjNGegJiYlekJnBupgWKJLHOSWfiUiuljH1bTyvLCJB7zgFp/5SqcZLKFdN1wVJzbQzS0t5zc85wkbuKthZc7kX3OP9twowz1cfAOWRkCjhItUOwAAAABJRU5ErkJggg==') no-repeat;
+    background-position: 10px 50%;
+    border: 1px solid #b0a7a7;
+    padding-left: 45px !important;
+}
+.template-header{
+  height: 15%;
+  display: flex;
+}
+.template-header-input{
+  background-color: #f0f0f0;
+  border: 0;
+  height: 100%;
+  width: 150px;
+  border-radius: 0.5rem;
+}
+.template-preview-back-button{
+  height: 15%;
+  display: flex;
+  align-items: center;
+
+}
+.template-view{
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+.template-message{
+  height: 70%;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 2;
+  overflow-y: scroll;
+}
+.message-box{
+  max-width: 75%;
+  border-radius: 20px;
+  box-shadow: #282c34 2px 4px 3px;
+  margin: 5px 0;
+}
+/* .send-bar{
+  height: 15%;
+} */

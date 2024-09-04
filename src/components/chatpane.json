@@ -1,0 +1,121 @@
+[
+    {
+        "id": 1,
+        "sender": "User1",
+        "receiver": "Harry Potter",
+        "messageUnread": 0,
+        "lastMessage": "Hello"
+    },
+    {
+        "id": 2,
+        "sender": "User1",
+        "receiver": "John Wick",
+        "messageUnread": 0,
+        "lastMessage": "Namaste"
+    },
+    {
+        "id": 3,
+        "sender": "User1",
+        "receiver": "Tony Stark",
+        "messageUnread": 0,
+        "lastMessage": "Hi"
+    },
+    {
+        "id": 4,
+        "sender": "User1",
+        "receiver": "Jack Sparrow",
+        "messageUnread": 0,
+        "lastMessage": "Hey"
+    },
+    {
+        "id": 5,
+        "sender": "User1",
+        "receiver": "Harry Potter",
+        "messageUnread": 0,
+        "lastMessage": "Hello"
+    },
+    {
+        "id": 6,
+        "sender": "User1",
+        "receiver": "John Wick",
+        "messageUnread": 0,
+        "lastMessage": "Namaste"
+    },
+    {
+        "id": 7,
+        "sender": "User1",
+        "receiver": "Tony Stark",
+        "messageUnread": 0,
+        "lastMessage": "Hi"
+    },
+    {
+        "id": 8,
+        "sender": "User1",
+        "receiver": "Jack Sparrow",
+        "messageUnread": 0,
+        "lastMessage": "Hey"
+    },
+    {
+        "id": 9,
+        "sender": "User1",
+        "receiver": "Harry Potter",
+        "messageUnread": 0,
+        "lastMessage": "Hello"
+    },
+    {
+        "id": 10,
+        "sender": "User1",
+        "receiver": "John Wick",
+        "messageUnread": 0,
+        "lastMessage": "Namaste"
+    },
+    {
+        "id": 11,
+        "sender": "User1",
+        "receiver": "Tony Stark",
+        "messageUnread": 0,
+        "lastMessage": "Hi"
+    },
+    {
+        "id": 12,
+        "sender": "User1",
+        "receiver": "Jack Sparrow",
+        "messageUnread": 0,
+        "lastMessage": "Hey"
+    },
+    {
+        "id": 13,
+        "sender": "User1",
+        "receiver": "Harry Potter",
+        "messageUnread": 0,
+        "lastMessage": "Hello"
+    },
+    {
+        "id": 14,
+        "sender": "User1",
+        "receiver": "John Wick",
+        "messageUnread": 0,
+        "lastMessage": "Namaste"
+    },
+    {
+        "id": 15,
+        "sender": "User1",
+        "receiver": "Tony Stark",
+        "messageUnread": 0,
+        "lastMessage": "Hi"
+    },
+    {
+        "id": 16,
+        "sender": "User1",
+        "receiver": "Jack Sparrow",
+        "messageUnread": 0,
+        "lastMessage": "Hey"
+    },
+    {
+        "id": 17,
+        "sender": "User1",
+        "receiver": "Reacher",
+        "messageUnread": 0,
+        "lastMessage": "Waasup"
+    }
+]
