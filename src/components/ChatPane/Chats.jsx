@@ -3,7 +3,7 @@ import axios from 'axios';
 import ChatComponent from './ChatComponent';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-const Chats = ({selectedWabaNumber, selectedChatNumber, state}) => {
+const Chats = ({selectedWabaNumber, selectedChatNumber, state ,setState}) => {
   const [chats, setChats ] = useState([])
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -13,7 +13,7 @@ const Chats = ({selectedWabaNumber, selectedChatNumber, state}) => {
     setCurrentPage(0)
     axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatHistory/30/0?mobileNumber=${selectedChatNumber}&wabaNumber=${selectedWabaNumber}`)
       .then(response => {
-        console.log(response.data.data)
+        // console.log(response.data.data)
         setChats(response.data.data.messages)
         setTotalPages(response.data.data.totalPagecount);
         setCurrentPage(prevState => prevState+1)
@@ -24,7 +24,8 @@ const Chats = ({selectedWabaNumber, selectedChatNumber, state}) => {
       })
   }
   useEffect(() => {
-    
+    setChats([]);
+    setState('unchanged')
     retrieveChats();
   },[selectedWabaNumber, selectedChatNumber,state])
 

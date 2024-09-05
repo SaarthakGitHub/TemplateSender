@@ -4,15 +4,12 @@ import axios from 'axios';
 import { FaSearch } from "react-icons/fa";
 import FilterModal from './FilterModal';
 
-const MiddlePaneTopBar = ({wabaGroups, setWabaGroupName,selectedWabaNumber, setSelectedWabaNumber, wabaNumbers, setChats, currentPage, setTotalPages}) => {
-    // const [open, setOpen] = useState(false)
-    // const filterRef = useRef();
+const TopBar = ({wabaGroups, setWabaGroupName,selectedWabaNumber, setSelectedWabaNumber, wabaNumbers, setChats, currentPage, setTotalPages}) => {
     const [searchText, setSearchText] = useState("")
 
     useEffect(() => {
       if(searchText ==='') return;
       const timeout = setTimeout(() => {
-        // Hardcoded waba number
         axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${currentPage}?wabaNumber=${selectedWabaNumber}&searchText=${searchText}`)
             .then(result => {
                 setTotalPages(1)
@@ -43,4 +40,4 @@ const MiddlePaneTopBar = ({wabaGroups, setWabaGroupName,selectedWabaNumber, setS
   );
 }
 
-export default MiddlePaneTopBar
+export default TopBar

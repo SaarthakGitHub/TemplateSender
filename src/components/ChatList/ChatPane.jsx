@@ -4,40 +4,8 @@ import ChatItem from './ChatItem';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const ChatPane = ({ chats,selectedWabaNumber,setChats, currentPage, setCurrentPage, totalPages, setSelectedChat }) => {
-//   const [counter, setCounter] = useState(1);
+
   const [hasMore, setHasMore] = useState(true);
-//   const currentPage = 0;
-//   const totalPages = 5;
-//   const [currentPage, setCurrentPage] = useState(0);
-
-
-  const style = {
-    height: 60,
-    border: "1px solid green",
-    margin: 6,
-    padding: 8,
-  };
-
-//   const fetchMoreData = async () => {
-//     console.log('Fetch User');
-//     if (counter >= 10) {
-//       setHasMore(false);
-//     } else {
-//       try {
-//         const response = await axios.get(
-//           `https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/20/$0?wabaNumber=${selectedWabaNumber}`
-//         );
-//         const newData = response.data.data.results;
-//         setChats(chats.concat(newData));
-//         setCounter((prevState) => prevState + 1);
-//       } catch (error) {
-//         console.error('Error fetching data:', error);
-//         setHasMore(false);
-//       }
-//     }
-//   };
-
-
 
 const fetchMoreData = () => {
     console.log("Calling fetch")

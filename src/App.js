@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-import MiddlePane from './components/ChatList/ListView';
+import ListView from './components/ChatList/ListView';
 import ChatView from './components/ChatPane/ChatView';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <div className="middle-pane">
-        <MiddlePane
+        <ListView
           chats={chats}
           setChats={setChats}
           setSelectedChat={setSelectedChat}

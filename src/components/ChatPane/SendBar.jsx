@@ -1,14 +1,14 @@
 import React from 'react'
+import axios from 'axios'
 import { Button } from 'react-bootstrap';
 
 import { MdSend } from "react-icons/md";
 
-const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate}) => {
+const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate, setState, setOpen, setTemplateClick}) => {
     let bodyArr = [];
     let headerArr =[];
     let buttonArr=[];
     let locationArr = [];
-    let coupon = [];
     const handleClick = () => {
         console.log(selectedTemplate.buttonString)
 
@@ -20,13 +20,12 @@ const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate}) => 
             if(inputName == 'BODY') bodyArr.push(inputs[i].value);
             if(inputName == 'DYNAMIC_URL') buttonArr.push(inputs[i].value);
             if(inputName == 'LOCATION') locationArr.push(inputs[i].value);
-            if(inputName == 'COPY_CODE') coupon.push(inputs[i].value)
+            if(inputName == 'COPY_CODE') buttonArr.push(inputs[i].value)
         }
         console.log("bodyArr = ", bodyArr )
         console.log("headerArr = ", headerArr )
         console.log("buttonArr = ", buttonArr )
         console.log("locationArr = ", locationArr )
-        console.log("coupon = ", coupon)
 
         const payload = {
             "wabaNumber": selectedWabaNumber,
@@ -37,9 +36,12 @@ const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate}) => 
             "headerVar": headerArr,
             "buttonVar": buttonArr,
             "locationVar": locationArr,
-            "coupon": coupon
         }
         console.log(JSON.stringify(payload))
+        axios.post('https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/sendTemplateMsg', payload)
+            .then(response => {
+                console.log(response)
+            })
 
         for(let i = 0 ; i< inputs.length ;i++){
             inputs[i].value = "";
@@ -48,10 +50,13 @@ const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate}) => 
         bodyArr= [];
         headerArr=[];
         buttonArr=[];
-        coupon = [];
         locationArr=[];
 
         // retrieveChats()
+        setOpen(false)
+        setTemplateClick(false)
+        console.log("false")
+        setState('changed')
     }
   return (
     <div className="send-bar d-flex flex-row-reverse mr-5 py-1  ">

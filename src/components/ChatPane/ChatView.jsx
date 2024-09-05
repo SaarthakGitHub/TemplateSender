@@ -8,8 +8,8 @@ const ChatView = ({selectedChatHeader, selectedWabaNumber, selectedChatNumber}) 
   return (
     <div className='d-flex flex-column h-100'>
       <ChatHeader selectedChatHeader={selectedChatHeader} />
-      <Chats selectedWabaNumber={selectedWabaNumber} selectedChatNumber={selectedChatNumber} state={state}/>
-      <TemplateBar selectedWabaNumber={selectedWabaNumber} selectedChatNumber={selectedChatNumber}/>
+      <Chats selectedWabaNumber={selectedWabaNumber} selectedChatNumber={selectedChatNumber} state={state} setState={setState}/>
+      <TemplateBar selectedWabaNumber={selectedWabaNumber} selectedChatNumber={selectedChatNumber} setState={setState}/>
     </div>
   );
 }

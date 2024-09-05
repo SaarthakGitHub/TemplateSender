@@ -7,7 +7,7 @@ import { MdArrowBack } from "react-icons/md";
 import { MdClose } from "react-icons/md";
 import TemplatePreview from './TemplatePreview';
 
-const TemplateBar = ({selectedWabaNumber, selectedChatNumber}) => {
+const TemplateBar = ({selectedWabaNumber, selectedChatNumber, setState}) => {
   const [open,setOpen] = useState(false)
   const [templateClick, setTemplateClick] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState({});
@@ -15,6 +15,7 @@ const TemplateBar = ({selectedWabaNumber, selectedChatNumber}) => {
   const style={
     display: open ? 'none' : 'block'
   }
+  
   // console.log(style)
   return templateClick ? (
     <div className='template-preview'>
@@ -29,7 +30,7 @@ const TemplateBar = ({selectedWabaNumber, selectedChatNumber}) => {
             setTemplateClick(false)
           setOpen(false)}}><MdClose size={22} color='red'/></a>
           </div>
-      <TemplatePreview selectedTemplate={selectedTemplate} selectedChatNumber={selectedChatNumber} selectedWabaNumber={selectedWabaNumber}/>
+      <TemplatePreview selectedTemplate={selectedTemplate} selectedChatNumber={selectedChatNumber} selectedWabaNumber={selectedWabaNumber} setState={setState} setOpen={setOpen} setTemplateClick={setTemplateClick}/>
     </div>
   ) : (
     <>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
-import MiddlePaneTopBar from "./TopBar.jsx";
+import TopBar from "./TopBar.jsx";
 import PaginationBar from "./PaginationBar.jsx";
 import ChatPane from "./ChatPane.jsx";
 
@@ -20,7 +20,7 @@ const MiddlePane = ({chats, setChats, setSelectedChat, selectedWabaNumber, setSe
         .then(result => {
           axios.get(`https://dev.videostori.io/pivp/sysconfig/wabanumberbygroupname/findbyid?wabaGroupName=${result.data.data[0]}&id=ALL`)
           .then(result => {
-            console.log("Setted default waba number")
+            // console.log("Setted default waba number")
             setSelectedWabaNumber(result.data.data[0].wabaNumber)
             setCurrentPage(0)
             // console.log(selectedWabaNumber)
@@ -106,7 +106,7 @@ useEffect(() => {
 
   return (
     <div className="d-flex flex-column vh-100">
-      <MiddlePaneTopBar wabaGroups={wabaGroups} setWabaGroupName={setWabaGroupName} selectedWabaNumber={selectedWabaNumber} setSelectedWabaNumber={setSelectedWabaNumber} wabaNumbers={wabaNumbers} setChats={setChats} currentPage={currentPage} setTotalPages={setTotalPages} />
+      <TopBar wabaGroups={wabaGroups} setWabaGroupName={setWabaGroupName} selectedWabaNumber={selectedWabaNumber} setSelectedWabaNumber={setSelectedWabaNumber} wabaNumbers={wabaNumbers} setChats={setChats} currentPage={currentPage} setTotalPages={setTotalPages} />
       <ChatPane chats={chats} selectedWabaNumber={selectedWabaNumber} setChats={setChats} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} setSelectedChat={setSelectedChat}/>
       <PaginationBar currentPage={currentPage} totalPages={totalPages} />
     </div>

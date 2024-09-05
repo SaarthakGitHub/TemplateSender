@@ -4,11 +4,11 @@ import TemplateMessage from './TemplateMessage';
 import SendBar from './SendBar';
 // import axios from 'axios';
 
-const TemplatePreview = ({selectedTemplate, selectedChatNumber, selectedWabaNumber}) => {
+const TemplatePreview = ({selectedTemplate, selectedChatNumber, selectedWabaNumber, setState, setOpen, setTemplateClick}) => {
     const [templateHeaders, setTemplateHeaders] = useState(0);
     const [templateMessage, setTemplateMessage] = useState('')
     useEffect(() => {
-        console.log(selectedTemplate)
+        console.log(selectedTemplate.buttonString)
         setTemplateHeaders(selectedTemplate.variables);
         setTemplateMessage(selectedTemplate.bodymessage)
     },[selectedTemplate])
@@ -16,7 +16,7 @@ const TemplatePreview = ({selectedTemplate, selectedChatNumber, selectedWabaNumb
     <div className='ml-3 template-view'>
     <TemplateFields templateHeaders={templateHeaders}/>
     <TemplateMessage message={templateMessage}/>
-    <SendBar selectedChatNumber={selectedChatNumber} selectedWabaNumber={selectedWabaNumber} selectedTemplate={selectedTemplate}/>
+    <SendBar selectedChatNumber={selectedChatNumber} selectedWabaNumber={selectedWabaNumber} selectedTemplate={selectedTemplate} setState={setState} setOpen={setOpen} setTemplateClick={setTemplateClick}/>
     </div>
   )
 }

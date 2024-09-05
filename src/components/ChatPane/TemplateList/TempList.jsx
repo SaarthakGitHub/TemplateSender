@@ -7,7 +7,6 @@ import axios from 'axios';
 
 const TempList = ({type,selectedWabaNumber, setTemplateClick, setSelectedTemplate, selectedTemplate}) => {
   const [items, setItems] = useState([]);
-  const arr = []
 
   useEffect(() => {
     if(selectedWabaNumber == '') return

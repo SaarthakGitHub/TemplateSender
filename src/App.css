@@ -142,6 +142,7 @@ body::-webkit-scrollbar{
   height: 80%;
   overflow-y: scroll;
   display: flex;
+  margin-top: 20px;
   flex-direction: column-reverse;
 }
 .template-bar{
@@ -218,3 +219,7 @@ body::-webkit-scrollbar{
   padding: 10px;
   /* width: fit-content; */
 }
+
+/* @media screen and (max-width: ) {
+  
+} */
