@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 const ChatHeader = ({ selectedChatHeader }) => {
   return (
     <div className='chat-header'>
-        <Navbar className="navbar position-fixed w-100 my-0 bg-green">
+        <Navbar className="w-100 upper-bar bg-green">
   <div className="container-fluid">
        <ul className="navbar-nav me-auto d-flex flex-row mb-2 mb-lg-0">
         <li className="nav-item">

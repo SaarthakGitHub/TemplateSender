@@ -4,7 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const TemplateMessage = ({message}) => {
   return (
-    <div className="template-message">
+    <div className="template-message w-100">
         <div><FaEye/> Preview</div>
         <div className='d-flex justify-content-center'>
             <div className='message-box p-3 position-relative'>

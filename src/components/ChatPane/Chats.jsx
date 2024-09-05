@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import axios from 'axios';
 import ChatComponent from './ChatComponent';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import WappAPI from '../../WappAPI';
 
 const Chats = ({selectedWabaNumber, selectedChatNumber, state ,setState}) => {
   const [chats, setChats ] = useState([])
@@ -11,7 +12,8 @@ const Chats = ({selectedWabaNumber, selectedChatNumber, state ,setState}) => {
 
   const retrieveChats = () => {
     setCurrentPage(0)
-    axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatHistory/30/0?mobileNumber=${selectedChatNumber}&wabaNumber=${selectedWabaNumber}`)
+    // axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatHistory/30/0?mobileNumber=${selectedChatNumber}&wabaNumber=${selectedWabaNumber}`)
+    WappAPI.getChatsByMobileNumber(0, selectedChatNumber, selectedWabaNumber)
       .then(response => {
         // console.log(response.data.data)
         setChats(response.data.data.messages)
@@ -31,13 +33,14 @@ const Chats = ({selectedWabaNumber, selectedChatNumber, state ,setState}) => {
 
   const fetchMoreChats = () => {
     console.log("Fetching...")
-    axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatHistory/30/${currentPage}?mobileNumber=${selectedChatNumber}&wabaNumber=${selectedWabaNumber}`)
+    // axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatHistory/30/${currentPage}?mobileNumber=${selectedChatNumber}&wabaNumber=${selectedWabaNumber}`)
+    WappAPI.getChatsByMobileNumber(currentPage, selectedChatNumber, selectedWabaNumber)
       .then(response => {
         const newChats = response.data.data.messages;
-        console.log(newChats)
+        // console.log(newChats)
         setChats(chats.concat(newChats))
         setHasMore(currentPage+ 1 < totalPages)
-        console.log(hasMore)
+        // console.log(hasMore)
         setCurrentPage(prevPage => prevPage+1)
       })
       .catch(err => {
@@ -50,7 +53,7 @@ const Chats = ({selectedWabaNumber, selectedChatNumber, state ,setState}) => {
       <InfiniteScroll
         dataLength={chats.length}
         next={fetchMoreChats}
-        style={{ display: "flex", flexDirection: "column-reverse" }} 
+        style={{ display: "flex", flexDirection: "column-reverse" , margin: "0 20px"}} 
         inverse={true}
         hasMore={currentPage+ 1 < totalPages}
         loader={<h4>Loading...</h4>}

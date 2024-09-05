@@ -4,13 +4,15 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdImage } from "react-icons/md";
 import { MdMovie } from "react-icons/md";
 import axios from 'axios';
+import WappAPI from '../../../WappAPI';
 
 const TempList = ({type,selectedWabaNumber, setTemplateClick, setSelectedTemplate, selectedTemplate}) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     if(selectedWabaNumber == '') return
-    axios.get(`https://dev.videostori.io/pivp/wappconfig/template/findbyheadertype?headerType=${type}&wabaNumber=${selectedWabaNumber}`)
+    // axios.get(`https://dev.videostori.io/pivp/wappconfig/template/findbyheadertype?headerType=${type}&wabaNumber=${selectedWabaNumber}`)
+    WappAPI.getTemplateByHeaderType(type, selectedWabaNumber)
       .then(response => {
         setItems(response.data.data)
       })

@@ -4,6 +4,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdImage } from "react-icons/md";
 import { MdMovie } from "react-icons/md";
 import axios from 'axios';
+import WappAPI from '../../../WappAPI';
 
 const SearchList = ({selectedWabaNumber, searchText, setActiveTab, setTemplateClick, setSelectedTemplate}) => {
     const [searchOutput, setSearchOutput] = useState([])
@@ -11,7 +12,8 @@ const SearchList = ({selectedWabaNumber, searchText, setActiveTab, setTemplateCl
 
     useEffect(() => {
         if(searchText == '') return setActiveTab('all')
-        axios.get(`https://dev.videostori.io/pivp/sysconfig/ChatHistory/findbyTemplateName?wabaNumber=${selectedWabaNumber}&templateName=${searchText}`)
+        // axios.get(`https://dev.videostori.io/pivp/sysconfig/ChatHistory/findbyTemplateName?wabaNumber=${selectedWabaNumber}&templateName=${searchText}`)
+        WappAPI.getTemplateByTemplateName(selectedWabaNumber, searchText)
             .then(response => {
                 setSearchOutput(response.data.data)
             })

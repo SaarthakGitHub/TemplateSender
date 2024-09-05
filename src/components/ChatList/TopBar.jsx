@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { FaSearch } from "react-icons/fa";
 import FilterModal from './FilterModal';
+import WappAPI from '../../WappAPI';
 
 const TopBar = ({wabaGroups, setWabaGroupName,selectedWabaNumber, setSelectedWabaNumber, wabaNumbers, setChats, currentPage, setTotalPages}) => {
     const [searchText, setSearchText] = useState("")
@@ -10,10 +11,15 @@ const TopBar = ({wabaGroups, setWabaGroupName,selectedWabaNumber, setSelectedWab
     useEffect(() => {
       if(searchText ==='') return;
       const timeout = setTimeout(() => {
-        axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${currentPage}?wabaNumber=${selectedWabaNumber}&searchText=${searchText}`)
+        // axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${currentPage}?wabaNumber=${selectedWabaNumber}&searchText=${searchText}`)
+        WappAPI.searchChatByText(currentPage, selectedWabaNumber, searchText)
             .then(result => {
                 setTotalPages(1)
                 setChats(result.data.data.results);
+            })
+            .catch(err => {
+              console.log(err);
+              throw new Error("Please enter a valid character")
             })
       }, 1000)
 

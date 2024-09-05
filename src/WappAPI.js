@@ -8,10 +8,6 @@ const getAllWabaNumberByGroup = (wabaGroup) => {
     return axios.get(`https://dev.videostori.io/pivp/sysconfig/wabanumberbygroupname/findbyid?wabaGroupName=${wabaGroup}&id=ALL`)
 }
 
-const getAllChatsNumberByWabaNumber = (page,wabaNumber) => {
-    return axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${page}?wabaNumber=${wabaNumber}&searchText=All`)
-}
-
 const searchChatByText = (page, wabaNumber, searchText) => {
     return axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${page}?wabaNumber=${wabaNumber}&searchText=${searchText}`)
 }
@@ -35,7 +31,6 @@ const sendTemplate = (payload) => {
 const WappAPI = {
     getAllWabaGroup,
     getAllWabaNumberByGroup,
-    getAllChatsNumberByWabaNumber,
     searchChatByText,
     getChatsByMobileNumber,
     getTemplateByHeaderType,

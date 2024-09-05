@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ChatItem from './ChatItem';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import WappAPI from '../../WappAPI';
 
 const ChatPane = ({ chats,selectedWabaNumber,setChats, currentPage, setCurrentPage, totalPages, setSelectedChat }) => {
 
@@ -9,10 +10,11 @@ const ChatPane = ({ chats,selectedWabaNumber,setChats, currentPage, setCurrentPa
 
 const fetchMoreData = () => {
     console.log("Calling fetch")
-    const url = `https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${currentPage}?wabaNumber=${selectedWabaNumber}&searchText=All`;
+    // const url = `https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${currentPage}?wabaNumber=${selectedWabaNumber}&searchText=All`;
     
-    axios
-      .get(url)
+    // axios
+    //   .get(url)
+    WappAPI.searchChatByText(currentPage, selectedWabaNumber, 'All')
       .then((response) => {
         console.log("Fetched")
           const newItems = response.data.data.results;

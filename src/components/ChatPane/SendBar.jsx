@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Button } from 'react-bootstrap';
 
 import { MdSend } from "react-icons/md";
+import WappAPI from '../../WappAPI';
 
 const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate, setState, setOpen, setTemplateClick}) => {
     let bodyArr = [];
@@ -10,7 +11,7 @@ const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate, setS
     let buttonArr=[];
     let locationArr = [];
     const handleClick = () => {
-        console.log(selectedTemplate.buttonString)
+        // console.log(selectedTemplate.buttonString)
 
         const inputs = document.getElementsByClassName('template-header-input');
         // console.log(typeof inputs)
@@ -22,10 +23,10 @@ const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate, setS
             if(inputName == 'LOCATION') locationArr.push(inputs[i].value);
             if(inputName == 'COPY_CODE') buttonArr.push(inputs[i].value)
         }
-        console.log("bodyArr = ", bodyArr )
-        console.log("headerArr = ", headerArr )
-        console.log("buttonArr = ", buttonArr )
-        console.log("locationArr = ", locationArr )
+        // console.log("bodyArr = ", bodyArr )
+        // console.log("headerArr = ", headerArr )
+        // console.log("buttonArr = ", buttonArr )
+        // console.log("locationArr = ", locationArr )
 
         const payload = {
             "wabaNumber": selectedWabaNumber,
@@ -37,26 +38,43 @@ const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate, setS
             "buttonVar": buttonArr,
             "locationVar": locationArr,
         }
-        console.log(JSON.stringify(payload))
-        axios.post('https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/sendTemplateMsg', payload)
+        // console.log(JSON.stringify(payload))
+        // axios.post('https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/sendTemplateMsg', payload)
+        WappAPI.sendTemplate(payload)
             .then(response => {
-                console.log(response)
+                // console.log(response.data.data)
+            })
+            .then(() => {
+                for(let i = 0 ; i< inputs.length ;i++){
+                    inputs[i].value = "";
+                }
+        
+                bodyArr= [];
+                headerArr=[];
+                buttonArr=[];
+                locationArr=[];
+        
+                // retrieveChats()
+                setOpen(false)
+                setTemplateClick(false)
+                // console.log("false")
+                setState('changed')
             })
 
-        for(let i = 0 ; i< inputs.length ;i++){
-            inputs[i].value = "";
-        }
+        // for(let i = 0 ; i< inputs.length ;i++){
+        //     inputs[i].value = "";
+        // }
 
-        bodyArr= [];
-        headerArr=[];
-        buttonArr=[];
-        locationArr=[];
+        // bodyArr= [];
+        // headerArr=[];
+        // buttonArr=[];
+        // locationArr=[];
 
-        // retrieveChats()
-        setOpen(false)
-        setTemplateClick(false)
-        console.log("false")
-        setState('changed')
+        // // retrieveChats()
+        // setOpen(false)
+        // setTemplateClick(false)
+        // console.log("false")
+        // setState('changed')
     }
   return (
     <div className="send-bar d-flex flex-row-reverse mr-5 py-1  ">

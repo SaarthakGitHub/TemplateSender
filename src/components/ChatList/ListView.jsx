@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import WappAPI from "../../WappAPI.js";
 import axios from 'axios';
 import TopBar from "./TopBar.jsx";
 import PaginationBar from "./PaginationBar.jsx";
@@ -16,15 +17,19 @@ const MiddlePane = ({chats, setChats, setSelectedChat, selectedWabaNumber, setSe
   const [wabaNumbers,setWabaNumbers] = useState([]);
 
   useEffect(() => {
-      axios.get('https://dev.videostori.io/pivp/sysconfig/wabagroupname/findbyid/ALL')
+      WappAPI.getAllWabaGroup()
         .then(result => {
-          axios.get(`https://dev.videostori.io/pivp/sysconfig/wabanumberbygroupname/findbyid?wabaGroupName=${result.data.data[0]}&id=ALL`)
+          // axios.get(`https://dev.videostori.io/pivp/sysconfig/wabanumberbygroupname/findbyid?wabaGroupName=${result.data.data[0]}&id=ALL`)
+          const wabaGroup = result.data.data[0];
+          WappAPI.getAllWabaNumberByGroup(wabaGroup)
           .then(result => {
             // console.log("Setted default waba number")
             setSelectedWabaNumber(result.data.data[0].wabaNumber)
             setCurrentPage(0)
             // console.log(selectedWabaNumber)
-            axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${currentPage}?wabaNumber=${result.data.data[0].wabaNumber}&searchText=All`)
+            // axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${currentPage}?wabaNumber=${result.data.data[0].wabaNumber}&searchText=All`)
+            const wabaNumber = result.data.data[0].wabaNumber
+            WappAPI.searchChatByText(currentPage,wabaNumber,'ALL')
             .then(result => {
                 setTotalPages(result.data.data.totalPageCount)
                 setSelectedChat({
@@ -37,18 +42,21 @@ const MiddlePane = ({chats, setChats, setSelectedChat, selectedWabaNumber, setSe
           })
         })
         .catch(err => {
-            throw new Error("Error fetching default")
+          console.log(err)
+            throw new Error("Error fetching default chats")
         })
       // eslint-disable-next-line
     },[])
 
   const retrieveWabaGroup = () => {
-    axios.get('https://dev.videostori.io/pivp/sysconfig/wabagroupname/findbyid/ALL')
-        .then(result => {
+    // axios.get('https://dev.videostori.io/pivp/sysconfig/wabagroupname/findbyid/ALL')
+    WappAPI.getAllWabaGroup()   
+    .then(result => {
           // console.log(result.data.data); 
             setWabaGroups(result.data.data)
         })
         .catch(err => {
+          console.log(err)
             throw new Error("Error fetching waba group")
         })
   }
@@ -61,7 +69,8 @@ useEffect(() => {
 const retrieveWabaNumber = () => {
   if (!wabaGroupName) return;
 
-  axios.get(`https://dev.videostori.io/pivp/sysconfig/wabanumberbygroupname/findbyid?wabaGroupName=${wabaGroupName}&id=ALL`)
+  // axios.get(`https://dev.videostori.io/pivp/sysconfig/wabanumberbygroupname/findbyid?wabaGroupName=${wabaGroupName}&id=ALL`)
+    WappAPI.getAllWabaNumberByGroup(wabaGroupName)
       .then(result => {
           // console.log(result.data)
           setTotalPages(result.data.data.totalPageCount)
@@ -80,7 +89,9 @@ useEffect(() => {
 
 const retrieveChats = () => {
   try{
-    axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/0?wabaNumber=${selectedWabaNumber}&searchText=All`)
+    if(!selectedWabaNumber) return
+    // axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/0?wabaNumber=${selectedWabaNumber}&searchText=All`)
+    WappAPI.searchChatByText(0,selectedWabaNumber, 'All')
             .then(result => {
               setTotalPages(result.data.data.totalPageCount);
               setSelectedChat({

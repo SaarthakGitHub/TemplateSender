@@ -23,7 +23,7 @@ const FilterModal = ({wabaGroups, setWabaGroupName, setSelectedWabaNumber, wabaN
   return (
     <div>
         <a className='modal-button' variant="primary" onClick={handleShow} role='button' >
-        <IoFilterSharp />
+        <IoFilterSharp size={25} />
       </a>
 
       <Modal
