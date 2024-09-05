@@ -13,7 +13,7 @@ const MiddlePaneTopBar = ({wabaGroups, setWabaGroupName,selectedWabaNumber, setS
       if(searchText ==='') return;
       const timeout = setTimeout(() => {
         // Hardcoded waba number
-        axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${currentPage}?wabaNumber=917827565763&searchText=${searchText}`)
+        axios.get(`https://dev.videostori.io/pivp/sysconfig/whatsappchatresponse/chatNumber/10/${currentPage}?wabaNumber=${selectedWabaNumber}&searchText=${searchText}`)
             .then(result => {
                 setTotalPages(1)
                 setChats(result.data.data.results);

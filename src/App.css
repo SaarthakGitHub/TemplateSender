@@ -140,6 +140,9 @@ body::-webkit-scrollbar{
 }
 .chat-component{
   height: 80%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }
 .template-bar{
   border-left: 5px solid #f0f0f0;
@@ -207,3 +210,11 @@ body::-webkit-scrollbar{
 /* .send-bar{
   height: 15%;
 } */
+
+
+.message-container{
+  max-width: 60%;
+  border-radius: 20px;
+  padding: 10px;
+  /* width: fit-content; */
+}

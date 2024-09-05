@@ -50,10 +50,12 @@ const SendBar = ({selectedChatNumber, selectedWabaNumber, selectedTemplate}) => 
         buttonArr=[];
         coupon = [];
         locationArr=[];
+
+        // retrieveChats()
     }
   return (
     <div className="send-bar d-flex flex-row-reverse mr-5 py-1  ">
-        <Button className='btn-sm' onClick={handleClick}>Send <MdSend/></Button>
+        <Button className='btn-md' onClick={handleClick}>Send <MdSend/></Button>
     </div>
   )
 }
